@@ -35,7 +35,7 @@ pub fn c_zemu_log_stack(s: &[u8]) {
 }
 
 #[cfg(test)]
-pub fn c_zemu_log_stack(s: &[u8]) {}
+pub fn c_zemu_log_stack(_s: &[u8]) {}
 
 pub fn c_check_app_canary() {
     unsafe { check_app_canary() }
@@ -68,7 +68,7 @@ impl RngCore for Trng {
     #[cfg(target_arch = "x86_64")]
     #[cfg(test)]
     fn fill_bytes(&mut self, dest: &mut [u8]) {
-        getrandom(dest);
+        getrandom(dest).ok();
     }
 
     #[cfg(target_arch = "x86_64")]
