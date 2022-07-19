@@ -28,7 +28,7 @@ Please:
 - **Do not use in production**
 - **Do not use a Ledger device with funds for development purposes.**
 - **Have a separate and marked device that is used ONLY for development and testing**
-# Bifrost  1.932.x
+# Bifrost  1.950.x
 
 ## System
 
@@ -112,6 +112,93 @@ Please:
 |Set keys |    |   |   | `Keys` keys <br/>`Bytes` proof <br/> |
 |Purge keys |    |   |   |  |
 
+## Democracy
+
+| Name        | Light | XL | Nesting | Arguments |
+| :---------- |:------------:|:--------:|:--------:|:--------|
+|Propose |    |   |   | `Hash` proposal_hash <br/>`CompactBalance` amount <br/> |
+|Second |    |   |   | `Compactu32` proposal <br/>`Compactu32` seconds_upper_bound <br/> |
+|Vote |    |   |   | `Compactu32` ref_index <br/>`AccountVote` vote <br/> |
+|Emergency cancel |    |   |   | `ReferendumIndex` ref_index <br/> |
+|External propose |    |   |   | `Hash` proposal_hash <br/> |
+|External propose majority |    |   |   | `Hash` proposal_hash <br/> |
+|External propose default |    |   |   | `Hash` proposal_hash <br/> |
+|Fast track |    |   |   | `Hash` proposal_hash <br/>`BlockNumber` voting_period <br/>`BlockNumber` delay <br/> |
+|Veto external |    |   |   | `Hash` proposal_hash <br/> |
+|Cancel referendum |    |   |   | `Compactu32` ref_index <br/> |
+|Cancel queued |    |   |   | `ReferendumIndex` which <br/> |
+|Delegate |    |   |   | `AccountId` to <br/>`Conviction` conviction <br/>`Balance` balance <br/> |
+|Undelegate |    |   |   |  |
+|Clear public proposals |    |   |   |  |
+|Note preimage |    |   |   | `Bytes` encoded_proposal <br/> |
+|Note preimage operational |    |   |   | `Bytes` encoded_proposal <br/> |
+|Note imminent preimage |    |   |   | `Bytes` encoded_proposal <br/> |
+|Note imminent preimage operational |    |   |   | `Bytes` encoded_proposal <br/> |
+|Reap preimage |    |   |   | `Hash` proposal_hash <br/>`Compactu32` proposal_len_upper_bound <br/> |
+|Unlock |    |   |   | `AccountId` target <br/> |
+|Remove vote |    |   |   | `ReferendumIndex` index <br/> |
+|Remove other vote |    |   |   | `AccountId` target <br/>`ReferendumIndex` index <br/> |
+|Enact proposal |    |   |   | `Hash` proposal_hash <br/>`ReferendumIndex` index <br/> |
+|Blacklist |    |   |   | `Hash` proposal_hash <br/>`OptionReferendumIndex` maybe_ref_index <br/> |
+|Cancel proposal |    |   |   | `Compactu32` prop_index <br/> |
+
+## Council
+
+| Name        | Light | XL | Nesting | Arguments |
+| :---------- |:------------:|:--------:|:--------:|:--------|
+|Set members |    |   |   | `VecAccountId` new_members <br/>`OptionAccountId` prime <br/>`MemberCount` old_count <br/> |
+|Execute |    |   |   | `Proposal` proposal <br/>`Compactu32` length_bound <br/> |
+|Propose |    |   |   | `Compactu32` threshold <br/>`Proposal` proposal <br/>`Compactu32` length_bound <br/> |
+|Vote |    |   |   | `Hash` proposal <br/>`Compactu32` index <br/>`bool` approve <br/> |
+|Close |    |   |   | `Hash` proposal_hash <br/>`Compactu32` index <br/>`Compactu64` proposal_weight_bound <br/>`Compactu32` length_bound <br/> |
+|Disapprove proposal |    |   |   | `Hash` proposal_hash <br/> |
+
+## TechnicalCommittee
+
+| Name        | Light | XL | Nesting | Arguments |
+| :---------- |:------------:|:--------:|:--------:|:--------|
+|Set members |    |   |   | `VecAccountId` new_members <br/>`OptionAccountId` prime <br/>`MemberCount` old_count <br/> |
+|Execute |    |   |   | `Proposal` proposal <br/>`Compactu32` length_bound <br/> |
+|Propose |    |   |   | `Compactu32` threshold <br/>`Proposal` proposal <br/>`Compactu32` length_bound <br/> |
+|Vote |    |   |   | `Hash` proposal <br/>`Compactu32` index <br/>`bool` approve <br/> |
+|Close |    |   |   | `Hash` proposal_hash <br/>`Compactu32` index <br/>`Compactu64` proposal_weight_bound <br/>`Compactu32` length_bound <br/> |
+|Disapprove proposal |    |   |   | `Hash` proposal_hash <br/> |
+
+## PhragmenElection
+
+| Name        | Light | XL | Nesting | Arguments |
+| :---------- |:------------:|:--------:|:--------:|:--------|
+|Vote |    |   |   | `VecAccountId` votes <br/>`Compactu128` amount <br/> |
+|Remove voter |    |   |   |  |
+|Submit candidacy |    |   |   | `Compactu32` candidate_count <br/> |
+|Renounce candidacy |    |   |   | `Renouncing` renouncing <br/> |
+|Remove member |    |   |   | `LookupasStaticLookupSource` who <br/>`bool` has_replacement <br/> |
+|Clean defunct voters |    |   |   | `u32` num_voters <br/>`u32` num_defunct <br/> |
+
+## CouncilMembership
+
+| Name        | Light | XL | Nesting | Arguments |
+| :---------- |:------------:|:--------:|:--------:|:--------|
+|Add member |    |   |   | `AccountId` who <br/> |
+|Remove member |    |   |   | `AccountId` who <br/> |
+|Swap member |    |   |   | `AccountId` remove <br/>`AccountId` add <br/> |
+|Reset members |    |   |   | `VecAccountId` members <br/> |
+|Change key |    |   |   | `AccountId` new_ <br/> |
+|Set prime |    |   |   | `AccountId` who <br/> |
+|Clear prime |    |   |   |  |
+
+## TechnicalMembership
+
+| Name        | Light | XL | Nesting | Arguments |
+| :---------- |:------------:|:--------:|:--------:|:--------|
+|Add member |    |   |   | `AccountId` who <br/> |
+|Remove member |    |   |   | `AccountId` who <br/> |
+|Swap member |    |   |   | `AccountId` remove <br/>`AccountId` add <br/> |
+|Reset members |    |   |   | `VecAccountId` members <br/> |
+|Change key |    |   |   | `AccountId` new_ <br/> |
+|Set prime |    |   |   | `AccountId` who <br/> |
+|Clear prime |    |   |   |  |
+
 ## XcmpQueue
 
 | Name        | Light | XL | Nesting | Arguments |
@@ -141,11 +228,6 @@ Please:
 |Limited reserve transfer assets |    |   |   | `BoxVersionedMultiLocation` dest <br/>`BoxVersionedMultiLocation` beneficiary <br/>`BoxVersionedMultiAssets` assets <br/>`u32` fee_asset_item <br/>`WeightLimit` weight_limit <br/> |
 |Limited teleport assets |    |   |   | `BoxVersionedMultiLocation` dest <br/>`BoxVersionedMultiLocation` beneficiary <br/>`BoxVersionedMultiAssets` assets <br/>`u32` fee_asset_item <br/>`WeightLimit` weight_limit <br/> |
 
-## CumulusXcm
-
-| Name        | Light | XL | Nesting | Arguments |
-| :---------- |:------------:|:--------:|:--------:|:--------|
-
 ## DmpQueue
 
 | Name        | Light | XL | Nesting | Arguments |
@@ -160,6 +242,7 @@ Please:
 |As derivative |    |   |   | `u16` index <br/>`Call` call <br/> |
 |Batch all |    |   |   | `VecCall` calls <br/> |
 |Dispatch as |    |   |   | `BoxPalletsOrigin` as_origin <br/>`Call` call <br/> |
+|Force batch |    |   |   | `VecCall` calls <br/> |
 
 ## Scheduler
 
@@ -236,6 +319,7 @@ Please:
 |Propose spend |    |   |   | `CompactBalance` amount <br/>`LookupasStaticLookupSource` beneficiary <br/> |
 |Reject proposal |    |   |   | `Compactu32` proposal_id <br/> |
 |Approve proposal |    |   |   | `Compactu32` proposal_id <br/> |
+|Remove approval |    |   |   | `Compactu32` proposal_id <br/> |
 
 ## Bounties
 
@@ -250,6 +334,17 @@ Please:
 |Claim bounty |    |   |   | `Compactu32` bounty_id <br/> |
 |Close bounty |    |   |   | `Compactu32` bounty_id <br/> |
 |Extend bounty expiry |    |   |   | `Compactu32` bounty_id <br/>`Bytes` remark <br/> |
+
+## Tips
+
+| Name        | Light | XL | Nesting | Arguments |
+| :---------- |:------------:|:--------:|:--------:|:--------|
+|Report awesome |    |   |   | `Bytes` reason <br/>`AccountId` who <br/> |
+|Retract tip |    |   |   | `Hash` hash <br/> |
+|Tip new |    |   |   | `Bytes` reason <br/>`AccountId` who <br/>`Compactu128` tip_value <br/> |
+|Tip |    |   |   | `Hash` hash <br/>`Compactu128` tip_value <br/> |
+|Close tip |    |   |   | `Hash` hash <br/> |
+|Slash tip |    |   |   | `Hash` hash <br/> |
 
 ## Preimage
 
