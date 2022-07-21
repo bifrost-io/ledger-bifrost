@@ -14,7 +14,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
         with:
           submodules: true
       - name: Install deps
@@ -29,7 +29,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
         with:
           submodules: true
       - name: Install deps
@@ -62,7 +62,7 @@ jobs:
       HOME: /home/zondax_circle
     steps:
       - name: Checkout
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
         with:
           submodules: true
       - name: Build Standard app
@@ -88,7 +88,7 @@ jobs:
       HOME: /home/zondax_circle
     steps:
       - name: Checkout
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
         with:
           submodules: true
       - name: Build Standard app
@@ -109,7 +109,7 @@ jobs:
       HOME: /home/zondax_circle
     steps:
       - name: Checkout
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
         with:
           submodules: true
       - name: Build Standard app
@@ -127,7 +127,7 @@ jobs:
           echo $HOME
           echo $DISPLAY
       - name: Checkout
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
         with:
           submodules: true
       - run: sudo apt-get update -y && sudo apt-get install -y libusb-1.0.0 libudev-dev
@@ -159,7 +159,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
         with:
           submodules: true
       - run: sudo apt-get update -y && sudo apt-get install -y libusb-1.0.0 libudev-dev
@@ -200,7 +200,7 @@ jobs:
       HOME: /home/zondax_circle
     steps:
       - name: Checkout
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
         with:
           submodules: true
       - name: Install deps
@@ -239,7 +239,7 @@ jobs:
       HOME: /home/zondax_circle
     steps:
       - name: Checkout
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
         with:
           submodules: true
       - name: Install deps
@@ -278,7 +278,7 @@ jobs:
       HOME: /home/zondax_circle
     steps:
       - name: Checkout
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
         with:
           submodules: true
       - name: Install deps
